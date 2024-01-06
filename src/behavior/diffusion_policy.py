@@ -166,7 +166,7 @@ class DiffusionPolicy(Actor):
         # (this is the forward diffusion process)
         noisy_action = self.train_noise_scheduler.add_noise(naction, noise, timesteps)
 
-        # forward pass
+        # forward pass of model / backward diffusion process
         noise_pred = self.model(noisy_action, timesteps, global_cond=obs_cond.float())
         loss = nn.functional.mse_loss(noise_pred, noise)
 

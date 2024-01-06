@@ -143,7 +143,7 @@ def main(config: ConfigDict):
         entity="robot-rearrangement",
         config=config.to_dict(),
         mode="online" if not config.dryrun else "disabled",
-        notes="Train end-to-end without pretraining",
+        notes="Train on precomputed features with small batch size of 128.",
     )
 
     # save stats to wandb and update the config object
@@ -355,7 +355,7 @@ if __name__ == "__main__":
     config.num_envs = num_envs
     config.num_epochs = 200
     config.obs_horizon = 2
-    config.observation_type = "image"
+    config.observation_type = "feature"
     config.randomness = "low"
     config.steps_per_epoch = 400 if args.dryrun is False else 10
     config.test_split = 0.05
@@ -402,7 +402,9 @@ if __name__ == "__main__":
         # / "processed/sim/feature_small/dino/one_leg/data.zarr"
         # / "processed/sim/image_small/one_leg/data.zarr"
         # / "processed/sim/image_small/one_leg/data_batch_32.zarr"
-        "/data/scratch/ankile/furniture-data/data/processed/sim/image_small/one_leg/data_batch_32.zarr"
+        # "/data/scratch/ankile/furniture-data/data/processed/sim/image_small/one_leg/data_batch_32.zarr"
+        "/data/scratch/ankile/furniture-data/data/processed/sim/feature_separate_small/vip/one_leg/data.zarr"
+        # "/data/scratch/ankile/furniture-data/data/processed/sim/feature_separate_small/vip/one_leg/data_aug.zarr"
     )
 
     print(f"Using data from {config.datasim_path}")
