@@ -925,8 +925,41 @@ class DataCollectorAugmentor:
 
 def main():
     parser = argparse.ArgumentParser(description="Collect IL data")
+    # TODO: Remove these arguments as they're not needed or in any way usable in this particular application
     # parser.add_argument(
     #     "--out-data-path", help="Path to directory to save the data", required=True
+    # )
+    # parser.add_argument(
+    #     "--is-sim",
+    #     action="store_true",
+    #     help="Use simulator, else use real world environment.",
+    # )
+    # parser.add_argument(
+    #     "--scripted",
+    #     action="store_true",
+    #     help="Use scripted function for getting action.",
+    # )
+    # parser.add_argument(
+    #     "--pkl-only",
+    #     action="store_true",
+    #     help="Only save the pickle file, not .mp4 and .pngs",
+    # )
+    # parser.add_argument(
+    #     "--headless", help="With front camera view", action="store_true"
+    # )
+    # parser.add_argument(
+    #     "--draw-marker", action="store_true", help="Draw AprilTag marker"
+    # )
+    # parser.add_argument(
+    #     "--manual-label",
+    #     action="store_true",
+    #     help="Manually label the reward",
+    # )
+    # parser.add_argument(
+    #     "--no-ee-laser",
+    #     action="store_false",
+    #     help="If set, will not show the laser coming from the end effector",
+    #     dest="ee_laser",
     # )
     parser.add_argument(
         "--furniture",
@@ -935,35 +968,9 @@ def main():
         required=True,
     )
     parser.add_argument(
-        "--is-sim",
-        action="store_true",
-        help="Use simulator, else use real world environment.",
-    )
-    parser.add_argument(
-        "--scripted",
-        action="store_true",
-        help="Use scripted function for getting action.",
-    )
-    parser.add_argument(
-        "--pkl-only",
-        action="store_true",
-        help="Only save the pickle file, not .mp4 and .pngs",
-    )
-    parser.add_argument(
         "--save-failure",
         action="store_true",
         help="Save failure trajectories.",
-    )
-    parser.add_argument(
-        "--headless", help="With front camera view", action="store_true"
-    )
-    parser.add_argument(
-        "--draw-marker", action="store_true", help="Draw AprilTag marker"
-    )
-    parser.add_argument(
-        "--manual-label",
-        action="store_true",
-        help="Manually label the reward",
     )
     parser.add_argument("--randomness", default="low", choices=["low", "med", "high"])
     parser.add_argument("--gpu-id", default=0, type=int)
@@ -986,13 +993,6 @@ def main():
         help="Source of the demonstration data",
         choices=["teleop", "rollout"],
         default="teleop",
-    )
-
-    parser.add_argument(
-        "--no-ee-laser",
-        action="store_false",
-        help="If set, will not show the laser coming from the end effector",
-        dest="ee_laser",
     )
 
     args = parser.parse_args()

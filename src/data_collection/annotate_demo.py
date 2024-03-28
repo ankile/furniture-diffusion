@@ -8,6 +8,8 @@ from src.visualization.render_mp4 import (
 )
 from src.common.tasks import task_phases
 
+# TODO: Add commandline arguments to this file akin to the dataprocessing code.
+
 from ipdb import set_trace as bp
 
 annotate = "success"

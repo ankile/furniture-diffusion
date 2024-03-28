@@ -21,16 +21,31 @@ def main():
         choices=list(config["furniture"].keys()),
         required=True,
     )
-    parser.add_argument(
-        "--is-sim",
-        action="store_true",
-        help="Use simulator, else use real world environment.",
-    )
-    parser.add_argument(
-        "--scripted",
-        action="store_true",
-        help="Use scripted function for getting action.",
-    )
+    # TODO: Remove these arguments as they're not relevant to the task of collecting demos by teleoperation:
+    # parser.add_argument(
+    #     "--is-sim",
+    #     action="store_true",
+    #     help="Use simulator, else use real world environment.",
+    # )
+    # parser.add_argument(
+    #     "--scripted",
+    #     action="store_true",
+    #     help="Use scripted function for getting action.",
+    # )
+    # parser.add_argument(
+    #     "--headless", help="With front camera view", action="store_true"
+    # )
+    # parser.add_argument(
+    #     "--draw-marker", action="store_true", help="Draw AprilTag marker"
+    # )
+    # parser.add_argument(
+    #     "--manual-label",
+    #     action="store_true",
+    #     help="Manually label the reward",
+    # )
+
+    # TODO: Remove this as well as we the storage of the renders doesn't work and never worked?
+    # Or could it be that it can be fixed quickly and is a nice addition?
     parser.add_argument(
         "--pkl-only",
         action="store_true",
@@ -40,17 +55,6 @@ def main():
         "--save-failure",
         action="store_true",
         help="Save failure trajectories.",
-    )
-    parser.add_argument(
-        "--headless", help="With front camera view", action="store_true"
-    )
-    parser.add_argument(
-        "--draw-marker", action="store_true", help="Draw AprilTag marker"
-    )
-    parser.add_argument(
-        "--manual-label",
-        action="store_true",
-        help="Manually label the reward",
     )
     parser.add_argument("--randomness", default="low", choices=["low", "med", "high"])
     parser.add_argument("--gpu-id", default=0, type=int)

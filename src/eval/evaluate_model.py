@@ -41,14 +41,8 @@ def validate_args(args: argparse.Namespace):
         "Invalid run-state: "
         f"{args.run_state}. Valid options are: None, running, finished, failed, crashed"
     )
-    # assert (
-    #     not args.continuous_mode
-    #     or args.sweep_id is not None
-    #     or args.project_id is not None
-    # ), "Continuous mode is only supported when sweep_id is provided"
 
     assert not args.leaderboard, "Leaderboard mode is not supported as of now"
-
     assert not args.store_video_wandb or args.wandb, "store-video-wandb requires wandb"
 
 
